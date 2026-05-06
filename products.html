@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | GLOSYN PROFESSIONAL</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/products.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/pages/products.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar scrolled">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-text">GLOSYN<span>Professional</span></div>
+      </a>
+      
+      <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Brand</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      
+      <div class="navbar-actions">
+        <a href="cart.html" class="navbar-action-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line></svg>
+        </button>
+      </div>
+      <div class="navbar-mobile-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Brand</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main style="padding-top: 100px;">
+    <section class="section">
+      <div class="container-wide">
+        <div class="text-center reveal" style="margin-bottom: var(--space-8);">
+          <h1 class="section-heading">Professional Collection</h1>
+          <p class="section-subheading">Discover our full range of salon-grade products, formulated for exceptional performance.</p>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="products-toolbar reveal stagger-children">
+          <div class="products-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="searchInput" placeholder="Search products, categories...">
+          </div>
+          
+          <div class="products-filters" id="categoryFilters">
+            <button class="filter-btn active" data-category="all">All Products</button>
+            <!-- Categories injected by JS -->
+          </div>
+          
+          <div class="products-sort">
+            <label for="sortSelect">Sort by:</label>
+            <select id="sortSelect">
+              <option value="featured">Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A-Z</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-count" id="productsCount">Loading products...</div>
+
+        <!-- Products Grid -->
+        <div class="products-grid stagger-children" id="productsGrid">
+          <!-- Products injected by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-text">GLOSYN<span>Professional</span></div>
+        </div>
+        <div class="footer-column">
+          <h4>Shop</h4><ul><li><a href="products.html">All Products</a></li></ul>
+        </div>
+        <div class="footer-column">
+          <h4>About</h4><ul><li><a href="contact.html">Contact Us</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 GLOSYN PROFESSIONAL.</p></div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof GLOSYN_PRODUCTS === 'undefined') return;
+
+      const grid = document.getElementById('productsGrid');
+      const countEl = document.getElementById('productsCount');
+      const filtersContainer = document.getElementById('categoryFilters');
+      const searchInput = document.getElementById('searchInput');
+      const sortSelect = document.getElementById('sortSelect');
+
+      let currentProducts = [...GLOSYN_PRODUCTS];
+      let currentCategory = new URLSearchParams(window.location.search).get('category') || 'all';
+      let searchQuery = '';
+      let currentSort = 'featured';
+
+      // Initialize
+      renderFilters();
+      applyFilters();
+
+      // Events
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        applyFilters();
+      });
+
+      sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        applyFilters();
+      });
+
+      function renderFilters() {
+        filtersContainer.innerHTML = '';
+        GLOSYN_CATEGORIES.forEach(cat => {
+          const btn = document.createElement('button');
+          btn.className = `filter-btn ${cat.slug === currentCategory ? 'active' : ''}`;
+          btn.dataset.category = cat.slug;
+          btn.textContent = cat.name;
+          btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCategory = cat.slug;
+            
+            // Update URL without reload
+            const url = new URL(window.location);
+            if (currentCategory === 'all') {
+              url.searchParams.delete('category');
+            } else {
+              url.searchParams.set('category', currentCategory);
+            }
+            window.history.pushState({}, '', url);
+            
+            applyFilters();
+          });
+          filtersContainer.appendChild(btn);
+        });
+      }
+
+      function applyFilters() {
+        // Filter by category
+        let filtered = GLOSYN_PRODUCTS;
+        if (currentCategory !== 'all') {
+          filtered = filtered.filter(p => p.categorySlug === currentCategory);
+        }
+
+        // Filter by search
+        if (searchQuery) {
+          filtered = filtered.filter(p => 
+            p.name.toLowerCase().includes(searchQuery) || 
+            p.category.toLowerCase().includes(searchQuery) ||
+            p.description.toLowerCase().includes(searchQuery)
+          );
+        }
+
+        // Sort
+        filtered.sort((a, b) => {
+          if (currentSort === 'price-asc') return a.price - b.price;
+          if (currentSort === 'price-desc') return b.price - a.price;
+          if (currentSort === 'name-asc') return a.name.localeCompare(b.name);
+          // Featured default
+          if (a.featured && !b.featured) return -1;
+          if (!a.featured && b.featured) return 1;
+          return 0;
+        });
+
+        currentProducts = filtered;
+        renderProducts();
+      }
+
+      function renderProducts() {
+        grid.innerHTML = '';
+        countEl.textContent = `Showing ${currentProducts.length} product${currentProducts.length !== 1 ? 's' : ''}`;
+
+        if (currentProducts.length === 0) {
+          grid.innerHTML = `
+            <div class="products-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <h3>No products found</h3>
+              <p>Try adjusting your search or filter criteria.</p>
+              <button class="btn btn-primary" style="margin-top:20px" onclick="document.querySelector('[data-category=\\'all\\']').click(); document.getElementById('searchInput').value=''">Clear Filters</button>
+            </div>
+          `;
+          return;
+        }
+
+        currentProducts.forEach((product, index) => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.style.animationDelay = `${index * 50}ms`;
+          
+          let badgeHtml = '';
+          if (product.badge) {
+            badgeHtml = `<span class="product-badge badge-${product.badge}">${product.badge === 'bestseller' ? 'Best Seller' : 'New'}</span>`;
+          }
+          if (!product.inStock) {
+            badgeHtml = `<span class="product-badge badge-oos">Out of Stock</span>`;
+          }
+          
+          card.innerHTML = `
+            <a href="product-detail.html?id=${product.id}">
+              <div class="product-card-image">
+                ${badgeHtml}
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-card-overlay">
+                  <button class="product-card-overlay-btn" onclick="event.preventDefault();" aria-label="Add to Wishlist">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                  <button class="product-card-overlay-btn" aria-label="View Details">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="product-card-content">
+                <div class="product-card-category">${product.category}</div>
+                <h3 class="product-card-title">${product.name}</h3>
+                <div class="product-card-tagline">${product.tagline}</div>
+                <div class="product-card-price">
+                  <span class="product-price-current">${product.currency}${GlosynApp.formatPrice(product.price)}</span>
+                </div>
+                <button class="product-card-action" onclick="event.preventDefault();">Quick Add</button>
+              </div>
+            </a>
+          `;
+          grid.appendChild(card);
+          
+          // Trigger reflow for animation
+          setTimeout(() => card.classList.add('active'), 10);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

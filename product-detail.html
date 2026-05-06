@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | GLOSYN PROFESSIONAL</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/products.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/pages/products.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar scrolled">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-text">GLOSYN<span>Professional</span></div>
+      </a>
+      
+      <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Brand</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      
+      <div class="navbar-actions">
+        <a href="cart.html" class="navbar-action-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line></svg>
+        </button>
+      </div>
+      <div class="navbar-mobile-toggle"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Brand</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <main>
+    <section class="product-detail">
+      <div class="container-wide" id="productDetailContainer">
+        <!-- Loading state -->
+        <div style="text-align: center; padding: 100px 0;">
+          <div class="preloader-logo" style="color: var(--color-navy);">Loading...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+      <div class="container-wide">
+        <h2 class="section-heading" style="margin-bottom: var(--space-8);">Related Products</h2>
+        <div class="product-showcase-scroll" id="relatedProductsContainer">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-text">GLOSYN<span>Professional</span></div>
+        </div>
+        <div class="footer-column">
+          <h4>Shop</h4><ul><li><a href="products.html">All Products</a></li></ul>
+        </div>
+        <div class="footer-column">
+          <h4>About</h4><ul><li><a href="contact.html">Contact Us</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 GLOSYN PROFESSIONAL.</p></div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof GLOSYN_PRODUCTS === 'undefined') return;
+
+      const container = document.getElementById('productDetailContainer');
+      const relatedContainer = document.getElementById('relatedProductsContainer');
+      
+      // Get product ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'bluetox-treatment'; // Default for demo
+      
+      const product = GLOSYN_PRODUCTS.find(p => p.id === productId);
+      
+      if (!product) {
+        container.innerHTML = `
+          <div class="text-center" style="padding: 100px 0;">
+            <h1 class="section-heading">Product Not Found</h1>
+            <p>The product you are looking for does not exist or has been removed.</p>
+            <a href="products.html" class="btn btn-primary" style="margin-top: 20px;">Return to Shop</a>
+          </div>
+        `;
+        return;
+      }
+
+      // Update Page Title
+      document.title = `${product.name} | GLOSYN PROFESSIONAL`;
+
+      // Render Product
+      let benefitsHtml = product.benefits.map(b => `
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          ${b}
+        </div>
+      `).join('');
+
+      let usageHtml = product.usage.map(u => `<li>${u}</li>`).join('');
+      let idealForHtml = product.idealFor.map(i => `<li>${i}</li>`).join('');
+      
+      let specsHtml = Object.entries(product.specifications).map(([key, val]) => `
+        <li><strong>${key}:</strong> ${val}</li>
+      `).join('');
+
+      let thumbsHtml = product.images.map((img, idx) => `
+        <div class="product-gallery-thumb ${idx === 0 ? 'active' : ''}" data-src="${img}">
+          <img src="${img}" alt="${product.name} view ${idx + 1}">
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="product-detail-grid">
+          <!-- Gallery -->
+          <div class="product-gallery reveal-left">
+            <div class="product-gallery-main">
+              ${product.badge ? `<span class="product-badge badge-${product.badge}">${product.badge === 'bestseller' ? 'Best Seller' : 'New'}</span>` : ''}
+              <img id="mainImage" src="${product.image}" alt="${product.name}">
+            </div>
+            ${product.images.length > 1 ? `<div class="product-gallery-thumbs">${thumbsHtml}</div>` : ''}
+          </div>
+
+          <!-- Info -->
+          <div class="product-info reveal-right">
+            <a href="products.html?category=${product.categorySlug}" class="product-info-category">${product.category}</a>
+            <h1>${product.name}</h1>
+            <p class="product-info-tagline">"${product.tagline}"</p>
+            
+            <div class="testimonial-stars" style="margin-bottom: var(--space-4);">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              <span style="font-size: var(--fs-sm); color: var(--text-tertiary); margin-left: 8px;">(${product.reviewCount} reviews)</span>
+            </div>
+
+            <div class="product-info-price">
+              <span class="currency">${product.currency}</span>${GlosynApp.formatPrice(product.price)}
+            </div>
+            
+            <p class="product-info-description">${product.description}</p>
+            
+            <div class="product-benefits">
+              <h3>Key Benefits</h3>
+              <div class="benefit-list">
+                ${benefitsHtml}
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button class="btn btn-primary" ${!product.inStock ? 'disabled style="opacity:0.5;"' : ''}>
+                ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
+              </button>
+              <button class="btn btn-outline" style="flex: 0 0 56px; padding: 0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </button>
+            </div>
+
+            <!-- Accordions -->
+            <div class="product-accordion">
+              <div class="accordion-item open">
+                <div class="accordion-header">
+                  Usage Instructions
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p style="margin-bottom:10px;"><strong>Professional Usage:</strong></p>
+                    <ul>${usageHtml}</ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  Ideal For
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <ul>${idealForHtml}</ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  Ingredients & Specs
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p style="margin-bottom:15px;"><strong>Key Ingredients:</strong> ${product.ingredients}</p>
+                    <ul>${specsHtml}</ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Accordion Logic
+      document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          item.classList.toggle('open');
+        });
+      });
+
+      // Gallery Thumbnails Logic
+      const mainImage = document.getElementById('mainImage');
+      document.querySelectorAll('.product-gallery-thumb').forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          document.querySelectorAll('.product-gallery-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          mainImage.src = thumb.dataset.src;
+        });
+      });
+
+      // Related Products (same category, exclude current)
+      const related = GLOSYN_PRODUCTS
+        .filter(p => p.categorySlug === product.categorySlug && p.id !== product.id)
+        .slice(0, 4);
+
+      if (related.length > 0) {
+        related.forEach(rel => {
+          const card = document.createElement('div');
+          card.className = 'product-card product-card-featured';
+          
+          let badgeHtml = '';
+          if (rel.badge) badgeHtml = `<span class="product-badge badge-${rel.badge}">${rel.badge === 'bestseller' ? 'Best Seller' : 'New'}</span>`;
+          
+          card.innerHTML = `
+            <a href="product-detail.html?id=${rel.id}">
+              <div class="product-card-image">
+                ${badgeHtml}
+                <img src="${rel.image}" alt="${rel.name}">
+              </div>
+              <div class="product-card-content">
+                <div class="product-card-category">${rel.category}</div>
+                <h3 class="product-card-title">${rel.name}</h3>
+                <div class="product-card-price">
+                  <span class="product-price-current">${rel.currency}${GlosynApp.formatPrice(rel.price)}</span>
+                </div>
+              </div>
+            </a>
+          `;
+          relatedContainer.appendChild(card);
+        });
+      } else {
+        document.querySelector('.related-products').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

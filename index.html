@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOSYN PROFESSIONAL | Luxury Salon Beauty Brand</title>
+  <meta name="description" content="GLOSYN PROFESSIONAL is a luxury salon-grade beauty brand focused on performance, elegance, and premium professional care.">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components/navbar.css">
+  <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/products.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js">
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-logo">GLOSYN <span>PROFESSIONAL</span></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <div class="navbar-logo-text">GLOSYN<span>Professional</span></div>
+      </a>
+      
+      <div class="navbar-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About Brand</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      
+      <div class="navbar-actions">
+        <button class="navbar-action-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <a href="wishlist.html" class="navbar-action-btn" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </a>
+        <a href="cart.html" class="navbar-action-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+      
+      <div class="navbar-mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Brand</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+    <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+      <a href="cart.html" style="font-size: 1rem; border: none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></a>
+      <button class="theme-toggle" style="background:none;border:none;color:inherit;"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:24px;height:24px;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <img src="photos/Hero image.jpeg" alt="Glosyn Professional Products">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles"></div>
+      
+      <div class="hero-content">
+        <span class="hero-label">A Drop of Pure Shine</span>
+        <h1 class="hero-title">Professional Beauty <span class="highlight">Redefined</span></h1>
+        <p class="hero-subtitle">Luxury Hair Care, Skin Care & Personal Care crafted for salons and professionals. Discover the unmatched glow of GLOSYN PROFESSIONAL.</p>
+        <div class="hero-buttons">
+          <a href="products.html" class="btn btn-primary">Explore Products</a>
+          <a href="about.html" class="btn btn-secondary">About Brand</a>
+        </div>
+      </div>
+      
+      <a href="#featured" class="hero-scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-mouse"></div>
+      </a>
+    </section>
+
+    <!-- Featured Products Showcase -->
+    <section class="featured-products section" id="featured">
+      <div class="container-wide">
+        <div class="text-center reveal">
+          <span class="label-sm">Signature Collection</span>
+          <h2 class="section-heading">Featured Excellence</h2>
+          <p class="section-subheading">Experience our most loved professional salon formulations, designed to deliver extraordinary results.</p>
+        </div>
+        
+        <div class="product-showcase-scroll stagger-children" id="featured-products-container">
+          <!-- Products will be injected here via JS -->
+        </div>
+        
+        <div class="text-center" style="margin-top: var(--space-10);">
+          <a href="products.html" class="btn btn-outline">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Brand Preview -->
+    <section class="about-preview section">
+      <div class="container">
+        <div class="about-preview-grid">
+          <div class="about-preview-visual reveal-left">
+            <div class="about-preview-image">
+              <img src="photos/Mask/argan serum.jpeg" alt="Glosyn Argan Serum">
+            </div>
+            <div class="about-floating-badge">
+              <div class="number">10+</div>
+              <div class="text">Years of<br>Excellence</div>
+            </div>
+          </div>
+          
+          <div class="about-preview-content reveal-right">
+            <span class="label-sm">Our Story</span>
+            <h2>Performance Meets Luxury</h2>
+            <p>At GLOSYN PROFESSIONAL, beauty is more than a routine — it is confidence, luxury, and self-expression.</p>
+            <p>The brand combines salon-grade hair therapies, high-performance skincare, and premium personal care solutions developed using innovative formulations and globally sourced ingredients.</p>
+            
+            <div class="about-philosophy stagger-children">
+              <div class="philosophy-item">
+                <div class="philosophy-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <span>Premium Quality</span>
+              </div>
+              <div class="philosophy-item">
+                <div class="philosophy-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <span>Salon Grade</span>
+              </div>
+            </div>
+            
+            <a href="about.html" class="btn btn-outline" style="margin-top: var(--space-4);">Discover Our Mission</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="shop-category section">
+      <div class="container-wide">
+        <div class="text-center reveal">
+          <span class="label-sm">Our Collections</span>
+          <h2 class="section-heading">Shop By Category</h2>
+        </div>
+        
+        <div class="category-grid stagger-children">
+          <a href="products.html?category=hair-care" class="category-card" data-category="haircare">
+            <div class="category-card-bg"></div>
+            <div class="category-card-content">
+              <h3>Hair Care</h3>
+              <span>Explore <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </a>
+          <a href="products.html?category=wax" class="category-card" data-category="wax">
+            <div class="category-card-bg"></div>
+            <div class="category-card-content">
+              <h3>Wax Collection</h3>
+              <span>Explore <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </a>
+          <a href="products.html?category=spa" class="category-card" data-category="spa">
+            <div class="category-card-bg"></div>
+            <div class="category-card-content">
+              <h3>Korean Spa</h3>
+              <span>Explore <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </a>
+          <a href="products.html?category=bridal" class="category-card" data-category="bridal">
+            <div class="category-card-bg"></div>
+            <div class="category-card-content">
+              <h3>Bridal Care</h3>
+              <span>Explore <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose section">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="label-sm">The Glosyn Difference</span>
+          <h2 class="section-heading">Why Professionals Choose Us</h2>
+          <p class="section-subheading">We combine advanced hair science with premium ingredients to deliver extraordinary results that professionals trust.</p>
+        </div>
+        
+        <div class="why-grid stagger-children">
+          <div class="why-card">
+            <div class="why-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="6.5"></line></svg>
+            </div>
+            <h3>Salon Grade Formulations</h3>
+            <p>Developed with precision and rigorously tested for professional use in top salons.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+            <h3>Premium Ingredients</h3>
+            <p>Globally sourced, high-quality ingredients chosen for maximum efficacy and safety.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h3>Professional Results</h3>
+            <p>Consistent, reliable, and stunning outcomes that keep clients coming back.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </div>
+            <h3>Luxury Experience</h3>
+            <p>From packaging to performance, we deliver a premium experience at every touchpoint.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </div>
+            <h3>Advanced Hair Science</h3>
+            <p>Innovative formulas incorporating the latest breakthroughs in cosmetic technology.</p>
+          </div>
+          <div class="why-card">
+            <div class="why-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3>Trusted by Professionals</h3>
+            <p>The brand of choice for elite stylists and salon owners seeking perfection.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Collections Slider -->
+    <section class="collections section">
+      <div class="container-wide">
+        <div class="text-center reveal">
+          <h2 class="section-heading">Curated Collections</h2>
+        </div>
+        
+        <div class="collections-slider stagger-children">
+          <div class="collection-card">
+            <div class="collection-card-bg"></div>
+            <div class="collection-card-content">
+              <span class="label-sm">Damage Recovery</span>
+              <h3>Hair Repair Collection</h3>
+              <p>Restore strength and vitality to damaged hair.</p>
+            </div>
+          </div>
+          <div class="collection-card">
+            <div class="collection-card-bg"></div>
+            <div class="collection-card-content">
+              <span class="label-sm">Frizz Control</span>
+              <h3>Smoothing Collection</h3>
+              <p>Achieve sleek, manageable hair that lasts.</p>
+            </div>
+          </div>
+          <div class="collection-card">
+            <div class="collection-card-bg"></div>
+            <div class="collection-card-content">
+              <span class="label-sm">Professional Removal</span>
+              <h3>Salon Wax Collection</h3>
+              <p>Gentle, effective liposoluble waxes.</p>
+            </div>
+          </div>
+          <div class="collection-card">
+            <div class="collection-card-bg"></div>
+            <div class="collection-card-content">
+              <span class="label-sm">Deep Hydration</span>
+              <h3>Korean Spa Collection</h3>
+              <p>Advanced moisture barrier technology.</p>
+            </div>
+          </div>
+          <div class="collection-card">
+            <div class="collection-card-bg"></div>
+            <div class="collection-card-content">
+              <span class="label-sm">Pre-Wedding Glow</span>
+              <h3>Bridal Care Collection</h3>
+              <p>Specialized formulations for the perfect day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta section">
+      <div class="container">
+        <div class="contact-cta-inner reveal-scale">
+          <span class="label-sm">Partner With Us</span>
+          <h2>Elevate Your Salon Experience</h2>
+          <p>Join the growing network of professional salons using Glosyn Professional to deliver exceptional results to their clients.</p>
+          <div class="contact-cta-buttons">
+            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+            <a href="https://instagram.com/glosyn.professional" target="_blank" class="btn btn-secondary">Follow on Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-text">GLOSYN<span>Professional</span></div>
+          <p>Luxury Hair Care, Skin Care & Personal Care crafted for salons and professionals. Experience performance that meets luxury.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="products.html?category=hair-care">Hair Care</a></li>
+            <li><a href="products.html?category=hair-treatments">Hair Treatments</a></li>
+            <li><a href="products.html?category=wax">Wax Collection</a></li>
+            <li><a href="products.html?category=spa">Korean Spa</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>About</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="about.html#philosophy">Philosophy</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Stay Updated</h4>
+          <p style="font-size: var(--fs-sm); color: rgba(255,255,255,0.5); margin-bottom: var(--space-4);">Subscribe to receive updates, access to exclusive deals, and more.</p>
+          <div class="footer-newsletter">
+            <form class="footer-newsletter-form">
+              <input type="email" placeholder="Enter your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 GLOSYN PROFESSIONAL. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Inject featured products
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('featured-products-container');
+      if (container && typeof GLOSYN_PRODUCTS !== 'undefined') {
+        const featuredProducts = GLOSYN_PRODUCTS.filter(p => p.featured).slice(0, 5);
+        
+        featuredProducts.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card product-card-featured';
+          
+          let badgeHtml = '';
+          if (product.badge) {
+            badgeHtml = `<span class="product-badge badge-${product.badge}">${product.badge === 'bestseller' ? 'Best Seller' : 'New'}</span>`;
+          }
+          
+          card.innerHTML = `
+            <a href="product-detail.html?id=${product.id}">
+              <div class="product-card-image">
+                ${badgeHtml}
+                <img src="${product.image}" alt="${product.name}">
+                <div class="product-card-overlay">
+                  <button class="product-card-overlay-btn" aria-label="Add to Wishlist">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                  <button class="product-card-overlay-btn" aria-label="View Details">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="product-card-content">
+                <div class="product-card-category">${product.category}</div>
+                <h3 class="product-card-title">${product.name}</h3>
+                <div class="product-card-tagline">${product.tagline}</div>
+                <div class="product-card-price">
+                  <span class="product-price-current">${product.currency}${GlosynApp.formatPrice(product.price)}</span>
+                </div>
+                <button class="product-card-action">Quick Add</button>
+              </div>
+            </a>
+          `;
+          container.appendChild(card);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
